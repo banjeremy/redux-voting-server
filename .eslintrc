@@ -1,0 +1,23 @@
+{
+  "parser"  : "babel-eslint",
+  "extends" : [
+    "standard",
+    "standard-react"
+  ],
+  "env"     : {
+    "browser" : true
+  },
+  "globals" : {
+    "describe": true,
+    "it": true
+  },
+  "rules": {
+    "semi" : [2, "always"],
+    "indent": [2, 2, {"SwitchCase": 1}],
+    "no-unused-vars": 1,
+    "space-before-function-paren": [2, "never"]
+  },
+  "ecmaFeatures": {
+    "spread": true
+  }
+}
