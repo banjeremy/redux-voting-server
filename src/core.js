@@ -12,3 +12,11 @@ export function next(currentState) {
     entries: entries.skip(2)
   });
 }
+
+export function vote(currentState, entry) {
+  return currentState.updateIn(
+    ['vote', 'tally', entry],
+    0,
+    (tally) => tally + 1
+  );
+}
