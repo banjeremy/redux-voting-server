@@ -71,5 +71,29 @@ describe('immutability', () => {
         )
       }));
     });
+
+    it('updates a nested property', () => {
+      const before = Map({
+        one: Map({
+          two: Map({
+            three: 3
+          })
+        })
+      });
+
+      const final = before.updateIn(
+        ['one', 'two', 'three'],
+        0,
+        () => 4
+      );
+
+      expect(final).to.equal(Map({
+        one: Map({
+          two: Map({
+            three: 4
+          })
+        })
+      }));
+    });
   });
 });

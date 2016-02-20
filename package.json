@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha --compilers js:babel-core/register --recursive",
+    "test:debug": "mocha --compilers js:babel-core/register --recursive --debug",
     "test:watch": "npm run test -- --watch"
   },
   "keywords": [],
