@@ -21,12 +21,18 @@ export function next(state) {
 
   // add winners back on to entries
   const entries = state.get('entries')
-    .concat(winners);
+   .concat(winners);
 
-  return state.merge({
-    vote: Map({ pair: entries.take(2) }),
-    entries: entries.skip(2)
-  });
+  if (entries.size === 1) {
+    return state.remove('entries')
+      .remove('vote')
+      .set('winner', entries.first());
+  } else {
+    return state.merge({
+      vote: Map({ pair: entries.take(2) }),
+      entries: entries.skip(2)
+    });
+  }
 }
 
 export function vote(state, entry) {
