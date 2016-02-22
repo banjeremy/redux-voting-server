@@ -55,8 +55,7 @@ describe('reducer', () => {
           'Trainspotting': 2,
           '28 Days Later': 1
         }
-      },
-      entries: []
+      }
     });
 
     const action = {
@@ -73,8 +72,24 @@ describe('reducer', () => {
           'Trainspotting': 3,
           '28 Days Later': 1
         }
-      },
-      entries: []
+      }
+    }));
+  });
+
+  it('can be used with reduce', () => {
+    const actions = [
+      {type: 'SET_ENTRIES', entries: ['Trainspotting', '28 Days Later']},
+      {type: 'NEXT'},
+      {type: 'VOTE', entry: 'Trainspotting'},
+      {type: 'VOTE', entry: 'Trainspotting'},
+      {type: 'VOTE', entry: '28 Days Later'},
+      {type: 'NEXT'}
+    ];
+
+    const nextState = actions.reduce(reducer, Map());
+
+    expect(nextState).to.equal(fromJS({
+      winner: 'Trainspotting'
     }));
   });
 });

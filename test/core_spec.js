@@ -115,46 +115,36 @@ describe('application logic', () => {
   describe('vote', () => {
     it('adds a tally for the voted entry', () => {
       const state = Map({
-        vote: Map({
-          pair: List.of('Trainspotting', '28 Days Later')
-        })
+        pair: List.of('Trainspotting', '28 Days Later')
       });
 
       const nextState = vote(state, 'Trainspotting');
 
       expect(nextState).to.equal(Map({
-        vote: Map({
-          pair: List.of('Trainspotting', '28 Days Later'),
-          tally: Map({
-            'Trainspotting': 1
-          })
+        pair: List.of('Trainspotting', '28 Days Later'),
+        tally: Map({
+          'Trainspotting': 1
         })
       }));
     });
 
     it('increments the tally for the voted entry', () => {
       const state = Map({
-        vote: Map({
-          pair: List.of('Trainspotting', '28 Days Later'),
-          tally: Map({
-            'Trainspotting': 3,
-            '28 Days Later': 2
-          })
-        }),
-        entries: List()
+        pair: List.of('Trainspotting', '28 Days Later'),
+        tally: Map({
+          'Trainspotting': 3,
+          '28 Days Later': 2
+        })
       });
 
       const nextState = vote(state, 'Trainspotting');
 
       expect(nextState).to.equal(Map({
-        vote: Map({
-          pair: List.of('Trainspotting', '28 Days Later'),
-          tally: Map({
-            'Trainspotting': 4,
-            '28 Days Later': 2
-          })
-        }),
-        entries: List()
+        pair: List.of('Trainspotting', '28 Days Later'),
+        tally: Map({
+          'Trainspotting': 4,
+          '28 Days Later': 2
+        })
       }));
     });
   });
